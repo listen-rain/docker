@@ -1,0 +1,54 @@
+PHP核心扩展
+
+例如，如果你想有一个PHP-FPM图像iconv，mcrypt并gd扩展，你可以继承你喜欢的基本图像，并编写您自己Dockerfile是这样的：
+
+#FROM php:7.0-fpm
+FROM php:5.6-fpm
+RUN  apt-get update && apt-get install -y \
+	 libfreetype6-dev \
+	 libjpeg62-turbo-dev \
+	 libmcrypt-dev \
+	 libpng-dev \
+	 && docker-php-ext-install -j$(nproc) iconv mcrypt \
+	 && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+	 && docker-php-ext-install -j$(nproc) gd
+
+请记住，您必须手动安装扩展的依赖关系。如果扩展需要自定义configure参数，则可以使用docker-php-ext-configure此示例的脚本。没有必要运行docker-php-source在这种情况下手动，因为这是由处理configure和install脚本。
+
+
+PECL扩展
+
+一些扩展没有与PHP源一起提供，而是通过PECL提供。要安装PECL扩展，请使用pecl install下载并编译它，然后使用docker-php-ext-enable启用它：
+
+FROM php：7.1-fpm
+RUN pecl install redis-3.1.0 \
+	&& pecl install xdebug-2.5.0 \
+	&& docker-php-ext-enable redis xdebug
+	
+FROM php：5.6-fpm
+RUN apt-get update && apt-get install -y libmemcached-dev zlib1g-dev \
+	&& pecl install memcached-2.2.0 \
+	&& docker-php-ext-enable memcached
+
+本次使用：
+	# 进入php容器
+	docker exec -it php56 bash 
+
+	# 安装扩展
+	docker-php-ext-install mcrypt gd pdo_mysql 
+	
+	# 添加配置文件 vim conf.d/docker-ext-install-mcrypt-pdo_mysql.ini
+	------
+ 	extension=mcrypt.so
+	extension=pdo_mysql.so
+
+	always_populate_raw_post_data=-1	
+	------
+
+	#至此 mcrypt、pdo_mysql 扩展已经自动安装并加载，无需make
+	#如果重启安装的扩展将不存在，需要提交成一个镜像！
+
+遇到的问题：
+	1、laravel 中遇到 Could Not Find Driver？
+		安装并加载 pdo_mysql 扩展即可
+

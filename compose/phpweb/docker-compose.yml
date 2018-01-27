@@ -1,0 +1,81 @@
+version: '2'
+
+services:
+ nginx:
+  ports:
+   - "80:80"
+  external_links:
+   - "php"
+  volumes:
+   - "/www:/www" 
+   - "/docker/lnmp/compose/phpweb/nginx/conf/nginx.conf:/usr/local/nginx/conf/nginx.conf"
+   - "/docker/lnmp/compose/phpweb/nginx/logs:/usr/local/nginx/logs"
+   - "/docker/lnmp/compose/phpweb/nginx/conf/vhost:/usr/local/nginx/conf/vhost"
+  container_name: "nginx"
+  depends_on:
+    - "php"
+    - "mysql"
+    - "redis"
+  image: "registry.cn-hangzhou.aliyuncs.com/listen/nginx:1.12.1"
+  restart: "always"
+  extra_hosts: 
+    - "centos:172.17.0.1"
+  networks: 
+    appnet:
+      ipv4_address: "172.19.0.5"
+
+ php:
+  ports:
+   - "9000:9000"
+  external_links:
+   - "mysql"
+   - "redis"
+  volumes:
+   - "/www:/www"
+   - "/docker/lnmp/compose/phpweb/php-fpm/7.0.7/etc/php.ini:/usr/local/php/etc/php.ini"
+   - "/docker/lnmp/compose/phpweb/php-fpm/7.0.7/logs:/usr/local/php/logs"
+  container_name: "php707"
+  image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm:7.0.7"
+  restart: "always"
+  networks: 
+    appnet:
+      ipv4_address: "172.19.0.4"
+
+ mysql:
+  ports:
+   - "3306:3306"
+  volumes:
+   - "/www:/www"
+   - "/docker/lnmp/compose/phpweb/mysql/5.5.58/data:/var/lib/mysql"
+   - "/docker/lnmp/compose/phpweb/mysql/5.5.58/conf.d:/etc/mysql/conf.d"
+  environment:
+   MYSQL_ROOT_PASSWORD: "root"
+  container_name: "mysql"
+  image: "mysql:5.5.58"
+  restart: "always"
+  networks: 
+    appnet:
+      ipv4_address: "172.19.0.2"
+
+ redis:
+  ports:
+   - "6379:6379"
+  volumes:
+   - "/docker/lnmp/compose/phpweb/redis/data:/data"
+   - "/docker/lnmp/compose/phpweb/redis/redis.conf:/usr/local/etc/redis/redis.conf"
+  container_name: "redis"
+  image: "registry.cn-hangzhou.aliyuncs.com/listen/redis:32"
+  restart: "always"
+  networks: 
+    appnet:
+      ipv4_address: "172.19.0.3"
+
+networks:
+  appnet:
+    driver: "bridge"
+    ipam: 
+     driver: "default"
+     config:
+      - subnet: 172.19.0.0/24
+        gateway: 172.19.0.1                   
+                                       

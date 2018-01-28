@@ -8,15 +8,15 @@ services:
    - "php"
   volumes:
    - "/www:/www" 
-   - "/docker/compose/phpweb/nginx/conf/nginx.conf:/usr/local/nginx/conf/nginx.conf"
-   - "/docker/compose/phpweb/nginx/logs:/usr/local/nginx/logs"
-   - "/docker/compose/phpweb/nginx/conf/vhost:/usr/local/nginx/conf/vhost"
+   - "/docker/compose/phpweb/nginx/nginx.conf:/etc/nginx/nginx.conf"
+   - "/docker/compose/phpweb/nginx/logs:/etc/nginx/logs"
+   - "/docker/compose/phpweb/nginx/conf.d:/etc/nginx/conf.d"
   container_name: "nginx"
   depends_on:
     - "php"
     - "mysql"
     - "redis"
-  image: "registry.cn-hangzhou.aliyuncs.com/listen/nginx:1.12.1"
+  image: "nginx"
   restart: "always"
   extra_hosts: 
     - "centos:172.19.0.1"
@@ -32,10 +32,10 @@ services:
    - "redis"
   volumes:
    - "/www:/www"
-   - "/docker/compose/phpweb/php-fpm/7.0.7/etc/php.ini:/usr/local/php/etc/php.ini"
-   - "/docker/compose/phpweb/php-fpm/7.0.7/logs:/usr/local/php/logs"
-  container_name: "php707"
-  image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm:7.0.7"
+   - "/docker/compose/phpweb/php-fpm/7.0.27/conf.d:/usr/local/etc/php/conf.d"
+   - "/docker/compose/phpweb/php-fpm/7.0.27/logs:/logs"
+  container_name: "php"
+  image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm:7.0.27"
   restart: "always"
   networks: 
     appnet:
@@ -64,8 +64,9 @@ services:
    - "/docker/compose/phpweb/redis/data:/data"
    - "/docker/compose/phpweb/redis/redis.conf:/usr/local/etc/redis/redis.conf"
   container_name: "redis"
-  image: "registry.cn-hangzhou.aliyuncs.com/listen/redis:32"
+  image: "redis:3.2"
   restart: "always"
+  command: redis-server /usr/local/etc/redis/redis.conf 
   networks: 
     appnet:
       ipv4_address: "172.19.0.3"

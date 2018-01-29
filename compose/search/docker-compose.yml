@@ -3,7 +3,8 @@ version: '2.0'
 services:
   elasticsearch:
     volumes:
-      - "/docker/lnmp/compose/search/esdata:/usr/share/elasticsearch/data"
+      - "/docker/compose/search/esdata:/usr/share/elasticsearch/data"
+      - "/docker/compose/search/es-config:/usr/share/elasticsearch/config"
     container_name: "es"  
     image: elasticsearch:5.6.3
     #entrypoint:
@@ -12,19 +13,29 @@ services:
     #  - -Ediscovery.zen.minimum_master_nodes=1
     ports: 
       - 9200:9200
+    #restart: "always"
     networks: 
       appnet:
-        ipv4_address: "172.18.0.7"
+        ipv4_address: "172.18.0.10"
 
   kibana:
     image: kibana:5.6.3
     container_name: "kibana"
     ports:
       - 5601:5601
+    #restart: "always"
     networks: 
       appnet:
-        ipv4_address: "172.18.0.8"    
-
+        ipv4_address: "172.18.0.11"    
+    
+  #logstash:
+  #  image: logstash:5.6.3
+  #  container_name: logstash
+  #  restart: "always"
+  #  networks:
+  #    appnet:
+  #      ipv4_address: "172.18.0.12"
+    
 networks:
   appnet:
     driver: "bridge"

@@ -6,6 +6,7 @@ services:
    - "80:80"
   external_links:
    - "php"
+   - "mysql"
   volumes:
    - "/www:/www" 
    - "/docker/compose/phpweb/nginx/nginx.conf:/etc/nginx/nginx.conf"

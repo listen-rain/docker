@@ -29,18 +29,18 @@ services:
       appnet:
         ipv4_address: "172.18.0.11"    
     
-  logstash:
-    image: logstash:5.6.3
-    volumes:
-        - "/docker/compose/search/ls-config:/config"
-    command: logstash -f /config/logstash.conf
-    #stdin_open: true
-    tty: true   
-    container_name: logstash
-    #restart: "always"
-    networks:
-      appnet:
-        ipv4_address: "172.18.0.12"
+  #logstash:
+  #  image: logstash:5.6.3
+  #  volumes:
+  #      - "/docker/compose/search/ls-config:/config"
+  #  command: logstash -f /config/logstash.conf
+  #  stdin_open: true
+  #  tty: true   
+  #  container_name: logstash
+  #  restart: "always"
+  #  networks:
+  #    appnet:
+  #      ipv4_address: "172.18.0.12"
     
 networks:
   appnet:

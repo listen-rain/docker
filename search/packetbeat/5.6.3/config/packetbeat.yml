@@ -1,12 +1,13 @@
 packetbeat.interfaces.device: any
 
 packetbeat.protocols.http:
-    hosts: ["172.17.0.3:9200"]
-    #ports: [9200]
+    ports: [80]
     send_request: true   
     include_body_for: ["application/json", "x-www-form-urlencoded"]
 
 output.console:
     pretty: true
 
+output.logstash:
+  hosts: ["172.17.0.1:5044"]
 

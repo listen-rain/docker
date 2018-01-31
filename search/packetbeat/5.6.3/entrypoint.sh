@@ -1,4 +1,3 @@
 #!/bin/bash
-
-packetbeat
+packetbeat -c /etc/packetbeat/packetbeat.yml
 

@@ -1,10 +1,18 @@
-FROM docker.elastic.co/beats/packetbeat:5.6.6
+FROM centos
 
-COPY packetbeat.yml /usr/share/packetbeat/packetbeat.yml
+RUN yum -y update \
+	&& yum -y install libpcap \
+	&& curl -L -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.6.6-x86_64.rpm \
+	&& sudo rpm -vi packetbeat-5.6.6-x86_64.rpm \
+	&& rm -f packetbeat-5.6.6-x86_64.rpm \
+	&& yum clean all \
+	&& rm -rf /var/cache/yum/* 
 
-USER root
+COPY entrypoint.sh /bin/entrypoint.sh
 
-RUN chown packetbeat /usr/share/packetbeat/packetbeat.yml
+RUN chmod 755 /bin/entrypoint.sh
 
-USER packetbeat
+ENTRYPOINT ["/bin/entrypoint.sh"]
+
+CMD ['-']
 

@@ -1,5 +1,6 @@
 
 compose/phpweb/nginx/logs
+compose/phpweb/nginx/conf.d
 compose/search/esdata
 search/es/5.6.3/esdata
 

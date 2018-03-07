@@ -1,0 +1,26 @@
+# .bashrc
+
+# User specific aliases and functions
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias l='ls -lah'
+alias nps='nohup phpstorm > /dev/null &'
+alias ims='imsettings-switch fcitx'
+
+alias det='docker exec -it'
+alias mysql='docker exec -it mysql mysql'
+alias mysqlexec='docker exec -i mysql mysql'
+alias mysqldump='docker exec -i mysql mysqldump'
+
+alias php='docker exec -i php php'
+
+alias mongo='docker exec -it mongo mongo'
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+

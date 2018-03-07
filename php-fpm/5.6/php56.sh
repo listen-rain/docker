@@ -3,8 +3,7 @@
 docker run \
 	-p 9001:9000 \
 	-v `pwd`/conf.d:/usr/local/etc/php/conf.d \
-	-v /www/huanle:/www/huanle \
-	-v /www/self:/www/self \
+	-v /www:/www \
 	--net=phpweb_appnet \
 	--ip 172.19.0.20 \
 	--name php56 \

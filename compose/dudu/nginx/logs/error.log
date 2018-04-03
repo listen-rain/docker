@@ -1,4 +1,0 @@
-
-2018/04/03 02:28:44 [error] 5#5: *3 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "192.168.42.128", referrer: "http://192.168.42.128/"
-2018/04/03 02:46:22 [error] 5#5: *8 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.19.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "centos.local", referrer: "http://centos.local/"
-2018/04/03 05:33:44 [error] 5#5: *11 open() "/www/test/favicon.ico" failed (2: No such file or directory), client: 192.168.42.1, server: centos.test.local, request: "GET /favicon.ico HTTP/1.1", host: "centos.test.local", referrer: "http://centos.test.local/"

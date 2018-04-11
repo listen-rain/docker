@@ -7,20 +7,24 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 alias l='ls -lah'
+alias ll='l'
+
+alias det='docker exec -it'
+alias dei='docker exec -i'
+
 alias nps='nohup phpstorm > /dev/null &'
 alias ims='imsettings-switch fcitx'
 
-alias det='docker exec -it'
-alias mysql='docker exec -it mysql mysql'
-alias mysqlexec='docker exec -i mysql mysql'
-alias mysqldump='docker exec -i mysql mysqldump'
+alias mysql='det mysql mysql'
+alias mysqlexec='dei mysql mysql'
+alias mysqldump='dei mysql mysqldump'
 
-alias php='docker exec -i php php'
+alias php='dei php php'
 
-alias mongo='docker exec -it mongo mongo'
+alias mongo='det mongo mongo'
+alias redis-cli='dei redis redis-cli'
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
-

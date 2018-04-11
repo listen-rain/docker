@@ -20,7 +20,6 @@ alias mysqlexec='dei mysql mysql'
 alias mysqldump='dei mysql mysqldump'
 
 alias php='dei php php'
-alias composer='dei php composer'
 
 alias mongo='det mongo mongo'
 alias redis-cli='dei redis redis-cli'

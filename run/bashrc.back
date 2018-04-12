@@ -11,6 +11,7 @@ alias ll='l'
 
 alias det='docker exec -it'
 alias dei='docker exec -i'
+alias detp='det php bash'
 
 alias nps='nohup phpstorm > /dev/null &'
 alias ims='imsettings-switch fcitx'
@@ -20,6 +21,7 @@ alias mysqlexec='dei mysql mysql'
 alias mysqldump='dei mysql mysqldump'
 
 alias php='dei php php'
+alias phpcs='dei php phpcs'
 
 alias mongo='det mongo mongo'
 alias redis-cli='dei redis redis-cli'

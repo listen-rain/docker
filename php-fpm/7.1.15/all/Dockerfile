@@ -1,6 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/listen/php-fpm:php-fpm-7.1.15-phpcs
+FROM registry.cn-hangzhou.aliyuncs.com/listen/php-fpm:7.1.15-all
 
-RUN curl -sS https://getcomposer.org/installer | php \
-	&& mv composer.phar /usr/local/bin/composer \
-	&& composer -v
+RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 

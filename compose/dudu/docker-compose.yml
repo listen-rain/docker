@@ -9,9 +9,9 @@ services:
    - "mysql"
   volumes:
    - "/www:/www" 
-   - "/docker/compose/dudu/nginx/nginx.conf:/etc/nginx/nginx.conf"
-   - "/docker/compose/dudu/nginx/logs:/etc/nginx/logs"
-   - "/docker/compose/dudu/nginx/conf.d:/etc/nginx/conf.d"
+   - "/dockers/compose/dudu/nginx/nginx.conf:/etc/nginx/nginx.conf"
+   - "/dockers/compose/dudu/nginx/logs:/etc/nginx/logs"
+   - "/dockers/compose/dudu/nginx/conf.d:/etc/nginx/conf.d"
   container_name: "nginx"
   depends_on:
     - "php"
@@ -32,8 +32,8 @@ services:
    - "redis"
   volumes:
    - "/www:/www"
-#   - "/docker/compose/dudu/php-fpm/7.1.15/conf.d:/usr/local/etc/php/conf.d"
-   - "/docker/compose/dudu/php-fpm/7.1.15/logs:/logs"
+#   - "/dockers/compose/dudu/php-fpm/7.1.15/conf.d:/usr/local/etc/php/conf.d"
+   - "/dockers/compose/dudu/php-fpm/7.1.15/logs:/logs"
   container_name: "php"
   image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm:7.1.15-all"
   restart: "always"
@@ -45,8 +45,8 @@ services:
   ports:
    - "6379:6379"
   volumes:
-   - "/docker/compose/dudu/redis/data:/data"
-   - "/docker/compose/dudu/redis/redis.conf:/usr/local/etc/redis/redis.conf"
+   - "/dockers/compose/dudu/redis/data:/data"
+   - "/dockers/compose/dudu/redis/redis.conf:/usr/local/etc/redis/redis.conf"
   container_name: "redis"
   image: "redis:4.0"
   restart: "always"
@@ -60,8 +60,8 @@ services:
    - "3306:3306"
   volumes:
    - "/www:/www"
-   - "/docker/compose/dudu/mysql/5.6/data:/var/lib/mysql"
-   - "/docker/compose/dudu/mysql/5.6/conf.d:/etc/mysql/conf.d"
+   - "/dockers/compose/dudu/mysql/5.6/data:/var/lib/mysql"
+   - "/dockers/compose/dudu/mysql/5.6/conf.d:/etc/mysql/conf.d"
   environment:
    MYSQL_ROOT_PASSWORD: "root"
   container_name: "mysql"

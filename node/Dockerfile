@@ -1,15 +1,11 @@
-FROM mycentos
+FROM registry.cn-hangzhou.aliyuncs.com/listen/centos:latest
 
-RUN echo -e "alias l='ls -lah'\n alias ll='l'" >> ~/.bashrc  
-
-RUN yum -y update && yum -y install wget \
-	&& wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
-	&& rpm -ivh epel-release-latest-7.noarch.rpm \
-	&& yum -y remove wget \
+RUN yum -y update \
+	&& yum -y install nodejs \
 	&& yum clean all \
 	&& history -c \
 	&& rm -rf ~/.bash_history \
 	&& rm -rf /tmp/* /var/log/* /var/cache/* 
 
-CMD ['/bin/bash']
+EXPOSE 3000
 

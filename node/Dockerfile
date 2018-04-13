@@ -1,4 +1,4 @@
-FROM centos:7.4.1708
+FROM mycentos
 
 RUN echo -e "alias l='ls -lah'\n alias ll='l'" >> ~/.bashrc  
 

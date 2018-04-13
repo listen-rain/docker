@@ -6,3 +6,5 @@ compose/dudu/nginx/conf.d
 compose/search/esdata
 search/es/5.6.3/esdata
 
+compose/dudu/mysql/5.6/data
+compose/dudu/redis/data

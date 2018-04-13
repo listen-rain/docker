@@ -23,5 +23,4 @@ alias phpcs='dei php phpcs'
 alias mongo='det mongo mongo'
 alias redis-cli='dei redis redis-cli'
 
-alias dpa="docker ps | awk '{print $NF}'"
 

@@ -10,9 +10,9 @@ services:
    - "redis"
   volumes:
    - "/www:/www" 
-   - "/docker/compose/phpweb/nginx/nginx.conf:/etc/nginx/nginx.conf"
-   - "/docker/compose/phpweb/nginx/logs:/etc/nginx/logs"
-   - "/docker/compose/phpweb/nginx/conf.d:/etc/nginx/conf.d"
+   - "/dockers/compose/phpweb/nginx/nginx.conf:/etc/nginx/nginx.conf"
+   - "/dockers/compose/phpweb/nginx/logs:/etc/nginx/logs"
+   - "/dockers/compose/phpweb/nginx/conf.d:/etc/nginx/conf.d"
   container_name: "nginx"
   depends_on:
     - "php"
@@ -34,8 +34,8 @@ services:
    - "redis"
   volumes:
    - "/www:/www"
-   - "/docker/compose/phpweb/php-fpm/7.0.27/conf.d:/usr/local/etc/php/conf.d"
-   - "/docker/compose/phpweb/php-fpm/7.0.27/logs:/logs"
+   - "/dockers/compose/phpweb/php-fpm/7.0.27/conf.d:/usr/local/etc/php/conf.d"
+   - "/dockers/compose/phpweb/php-fpm/7.0.27/logs:/logs"
   container_name: "php"
   image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm:7.0.27"
   restart: "always"
@@ -48,8 +48,8 @@ services:
    - "3306:3306"
   volumes:
    - "/www:/www"
-   - "/docker/compose/phpweb/mysql/5.5.58/data:/var/lib/mysql"
-   - "/docker/compose/phpweb/mysql/5.5.58/conf.d:/etc/mysql/conf.d"
+   - "/dockers/compose/phpweb/mysql/5.5.58/data:/var/lib/mysql"
+   - "/dockers/compose/phpweb/mysql/5.5.58/conf.d:/etc/mysql/conf.d"
   environment:
    MYSQL_ROOT_PASSWORD: "root"
   container_name: "mysql"
@@ -63,8 +63,8 @@ services:
   ports:
    - "6379:6379"
   volumes:
-   - "/docker/compose/phpweb/redis/data:/data"
-   - "/docker/compose/phpweb/redis/redis.conf:/usr/local/etc/redis/redis.conf"
+   - "/dockers/compose/phpweb/redis/data:/data"
+   - "/dockers/compose/phpweb/redis/redis.conf:/usr/local/etc/redis/redis.conf"
   container_name: "redis"
   image: "redis:3.2"
   restart: "always"

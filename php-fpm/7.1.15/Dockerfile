@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd pdo_mysql iconv mcrypt 
 
-RUN pear config-set http_proxy http://duotai:yE7VLSSrOoMs@hyatt.h.timonit.cn:19789 \
+RUN pear config-set http_proxy 'http://duotai:yE7VLSSrOoMs@hyatt.h.timonit.cn:19789' \
     && pecl install redis \
     && apt-get update && apt-get install -y libzip-dev libzip2 && pecl install zip \
     && pecl install apcu \

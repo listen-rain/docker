@@ -1,5 +1,7 @@
 FROM php:7.1.15-fpm
 
+RUN echo -e "alias l='ls -lah'\nalias ll='l'\n" >> ~/.bashrc 
+
 RUN apt-get update && apt-get install -y \
 	libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -21,4 +23,13 @@ RUN pear config-set http_proxy http://duotai:yE7VLSSrOoMs@hyatt.h.timonit.cn:197
 
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
+
+RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+RUN apt-get -y update \
+        && apt-get -y install vim --no-install-recommends \
+        && rm -rf ~/.bash_history \
+        && rm -rf /tmp/* /var/log/* /var/cache/*
+
+WORKDIR /www
 

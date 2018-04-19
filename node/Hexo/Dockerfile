@@ -1,10 +1,12 @@
 FROM registry.cn-hangzhou.aliyuncs.com/listen/cnpm:latest
 
-RUN mkdir /hexo && cd /hexo \
-	&& cnpm install hexo-cli -g \
-	&& hexo init blog \
-	&& cd blog \
-	&& cnpm install 
+RUN mkdir /hexo
+ 
+COPY docker-entrypoint.sh /usr/local/bin/
+
+RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 VOLUME /hexo
 

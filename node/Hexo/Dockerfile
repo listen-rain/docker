@@ -2,11 +2,11 @@ FROM registry.cn-hangzhou.aliyuncs.com/listen/cnpm:latest
 
 RUN cd / && mkdir hexo
  
-COPY docker-entrypoint.sh /usr/local/bin/
+COPY start.sh /usr/local/bin/
 
-RUN ln -s /usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+RUN ln -s /usr/local/bin/start.sh /start.sh
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/start.sh"]
 
 VOLUME /hexo
 

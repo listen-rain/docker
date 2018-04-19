@@ -18,8 +18,8 @@ RUN  pecl install redis \
     && pecl install mongodb \
     && pear install PHP_CodeSniffer \
     && phpcs --config-set encoding 'utf-8' \
-    && docker-php-ext-enable redis apcu xdebug mongodb zip \
-    && pear config-set http_proxy ''
+    && docker-php-ext-enable redis apcu xdebug mongodb zip
+#    && pear config-set http_proxy ''
 
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer

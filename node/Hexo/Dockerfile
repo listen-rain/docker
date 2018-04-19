@@ -4,7 +4,7 @@ RUN cd / && mkdir hexo
  
 COPY start.sh /usr/local/bin/ 
 
-RUN a+x /usr/local/bin/start.sh && ln -s /usr/local/bin/start.sh /start.sh
+RUN chmod a+x /usr/local/bin/start.sh && ln -s /usr/local/bin/start.sh /start.sh
 
 ENTRYPOINT ["/start.sh"]
 

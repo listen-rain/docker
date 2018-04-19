@@ -48,7 +48,3 @@ RUN apt-get update && apt-get install -y libmemcached-dev zlib1g-dev \
 	#至此 mcrypt、pdo_mysql 扩展已经自动安装并加载，无需make
 	#如果重启安装的扩展将不存在，需要提交成一个镜像！
 
-遇到的问题：
-	1、laravel 中遇到 Could Not Find Driver？
-		安装并加载 pdo_mysql 扩展即可
-

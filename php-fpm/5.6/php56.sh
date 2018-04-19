@@ -7,5 +7,5 @@ docker run \
 	--net=phpweb_appnet \
 	--ip 172.19.0.20 \
 	--name php56 \
-	-d registry.cn-hangzhou.aliyuncs.com/listen/php-fpm:5.6
+	-d registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-5.6
 

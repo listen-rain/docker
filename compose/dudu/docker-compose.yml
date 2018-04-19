@@ -35,7 +35,7 @@ services:
 #   - "/dockers/compose/dudu/php-fpm/7.1.15/conf.d:/usr/local/etc/php/conf.d"
    - "/dockers/compose/dudu/php-fpm/7.1.15/logs:/logs"
   container_name: "php"
-  image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm:7.1.15-all"
+  image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-7.1.15"
   restart: "always"
   networks: 
     appnet:

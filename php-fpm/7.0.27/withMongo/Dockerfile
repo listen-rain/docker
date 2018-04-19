@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/listen/php-fpm:7.0.27
+FROM registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-7.0.27
 
 RUN apt-get update \
 	&& apt-get install -y wget openssl libssl-dev --no-install-recommends \

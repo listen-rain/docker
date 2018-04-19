@@ -1,6 +1,7 @@
 FROM php:7.1.15-fpm
 
-RUN echo -e "alias l='ls -lah'\nalias ll='l'\n" >> ~/.bashrc 
+RUN echo "alias l='ls -lah'" >> ~/.bashrc \
+	&& echo "alias ll='ls -lah'" >> ~/.bashrc 
 
 RUN apt-get update && apt-get install -y \
 	libfreetype6-dev \
@@ -10,7 +11,10 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd pdo_mysql iconv mcrypt 
 
-# RUN pear config-set http_proxy 'http://duotai:yE7VLSSrOoMs@hyatt.h.timonit.cn:19789' \
+# local install needs VPN
+# pear config-set http_proxy 'VPN'
+# pear config-set http_proxy ''
+
 RUN  pecl install redis \
     && apt-get update && apt-get install -y libzip-dev libzip2 && pecl install zip \
     && pecl install apcu \
@@ -19,7 +23,6 @@ RUN  pecl install redis \
     && pear install PHP_CodeSniffer \
     && phpcs --config-set encoding 'utf-8' \
     && docker-php-ext-enable redis apcu xdebug mongodb zip
-#    && pear config-set http_proxy ''
 
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer

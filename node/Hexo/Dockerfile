@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/listen/node:latest
+FROM registry.cn-hangzhou.aliyuncs.com/listen/cnpm:latest
 
 RUN mkdir /hexo && cd /hexo \
 	&& cnpm install hexo-cli -g \

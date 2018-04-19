@@ -10,5 +10,7 @@ ENTRYPOINT ["/start.sh"]
 
 VOLUME /hexo
 
+WORKDIR /hexo
+
 EXPOSE 4000
 

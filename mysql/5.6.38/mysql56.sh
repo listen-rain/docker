@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker run --name offmysql56 \
+docker run --name mysql56 \
 	-p 3308:3306 \
 	--network compose_appnet \
 	--ip 172.19.0.6 \

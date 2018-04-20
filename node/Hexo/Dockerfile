@@ -1,14 +1,16 @@
-FROM registry.cn-hangzhou.aliyuncs.com/listen/node:latest
+FROM registry.cn-hangzhou.aliyuncs.com/listen/cnpm:latest
 
-RUN mkdir /hexo && cd /hexo \
-	&& npm install hexo-cli -g \
-	&& hexo init blog \
-	&& cd blog \
-	&& npm install 
+RUN cd / && mkdir hexo
+ 
+COPY start.sh /usr/local/bin/ 
+
+RUN chmod a+x /usr/local/bin/start.sh && ln -s /usr/local/bin/start.sh /start.sh
+
+ENTRYPOINT ["/start.sh"]
 
 VOLUME /hexo
 
-EXPOSE 4000
+WORKDIR /hexo
 
-CMD ["hexo server"]
+EXPOSE 4000
 

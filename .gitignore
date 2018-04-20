@@ -1,10 +1,11 @@
 
-compose/phpweb/nginx/logs
-compose/dudu/nginx/logs
-compose/phpweb/nginx/conf.d
-compose/dudu/nginx/conf.d
+compose/70-php/nginx/logs
+compose/71-php/nginx/logs
+compose/71-php/nginx/conf.d
+compose/70-php/nginx/conf.d
 compose/search/esdata
 search/es/5.6.3/esdata
 
-compose/dudu/mysql/5.6/data
-compose/dudu/redis/data
+compose/71-php/mysql/5.6/data/
+compose/71-php/redis/data/
+

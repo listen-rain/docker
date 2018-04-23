@@ -1,6 +1,7 @@
 FROM php:7.1.15-fpm
 
-RUN echo "alias l='ls -lah'" >> ~/.bashrc \
+RUN echo "alias ls='ls --color=auto'" \
+	&& echo "alias l='ls -lah'" >> ~/.bashrc \
 	&& echo "alias ll='ls -lah'" >> ~/.bashrc 
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

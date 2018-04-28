@@ -7,4 +7,6 @@ compose/search/esdata
 search/es/5.6.3/esdata
 
 compose/71-php/mysql/5.6/data/
+compose/71-php/mysql/5.7/data/
 compose/71-php/redis/data/
+

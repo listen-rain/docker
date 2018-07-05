@@ -64,6 +64,7 @@ services:
   environment:
    MYSQL_ROOT_PASSWORD: "root"
   container_name: "mysql"
+  #image: "mysql:5.6.38"
   image: "mysql:5.7.20"
   restart: "always"
   networks: 

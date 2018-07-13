@@ -9,9 +9,9 @@ services:
    - "mysql"
   volumes:
    - "/www:/www" 
-   - "/dockers/compose/71-php/nginx/nginx.conf:/etc/nginx/nginx.conf"
-   - "/dockers/compose/71-php/nginx/logs:/etc/nginx/logs"
-   - "/dockers/compose/71-php/nginx/conf.d:/etc/nginx/conf.d"
+   - "${PWD}/nginx/nginx.conf:/etc/nginx/nginx.conf"
+   - "${PWD}/nginx/logs:/etc/nginx/logs"
+   - "${PWD}/nginx/conf.d:/etc/nginx/conf.d"
   container_name: "nginx"
   depends_on:
     - "php"
@@ -32,7 +32,7 @@ services:
    - "redis"
   volumes:
    - "/www:/www"
-   - "/dockers/compose/71-php/php-fpm/7.1.15/logs:/logs"
+   - "${PWD}/php-fpm/7.1.15/logs:/logs"
   container_name: "php"
   image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-7.1.15"
   restart: "always"
@@ -44,8 +44,8 @@ services:
   ports:
    - "6379:6379"
   volumes:
-   - "/dockers/compose/71-php/redis/data:/data"
-   - "/dockers/compose/71-php/redis/redis.conf:/usr/local/etc/redis/redis.conf"
+   - "${PWD}/redis/data:/data"
+   - "${PWD}/redis/redis.conf:/usr/local/etc/redis/redis.conf"
   container_name: "redis"
   image: "redis:4.0"
   restart: "always"
@@ -59,12 +59,13 @@ services:
    - "3306:3306"
   volumes:
    - "/www:/www"
-   - "/dockers/compose/71-php/mysql/5.6/data:/var/lib/mysql"
-   - "/dockers/compose/71-php/mysql/5.6/conf.d:/etc/mysql/conf.d"
+   - "${PWD}/mysql/5.6/data:/var/lib/mysql"
+   - "${PWD}/mysql/5.6/conf.d:/etc/mysql/conf.d"
   environment:
    MYSQL_ROOT_PASSWORD: "root"
   container_name: "mysql"
-  image: "mysql:5.6"
+  #image: "mysql:5.6.38"
+  image: "mysql:5.7.20"
   restart: "always"
   networks: 
     appnet:

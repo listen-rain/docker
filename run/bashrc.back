@@ -35,10 +35,12 @@ alias gpl='git pull'
 alias gs='git status'
 alias gr='git remote'
 alias grv='gr -v'
+alias gall='ga && gcnm && gpl && gp'
 
 # larvel about
 alias pa='php artisan'
 alias pat='php artisan tinker'
+alias pamrs='php artisan migrate:refresh --seed'
 
 # composer about
 alias ci='composer install'

@@ -10,12 +10,12 @@ alias detp='det php bash'
 alias drv='docker rm -v'
 alias dri='docker rmi'
 
-alias mysql='det mysql mysql'
-alias mysqlexec='dei mysql mysql'
-alias mysqldump='dei mysql mysqldump'
+alias mysql='det mysql57 mysql'
+alias mysqlexec='dei mysql57 mysql'
+alias mysqldump='dei mysql57 mysqldump'
 
-alias php='dei php php'
-alias phpcs='dei php phpcs'
+alias php='dei php72 php'
+alias phpcs='dei php72 phpcs'
 
 # alias nps='nohup phpstorm > /dev/null &'
 # alias ims='imsettings-switch fcitx'

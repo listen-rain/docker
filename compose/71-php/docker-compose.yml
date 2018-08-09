@@ -59,8 +59,8 @@ services:
    - "3306:3306"
   volumes:
    - "/www:/www"
-   - "${PWD}/mysql/5.6/data:/var/lib/mysql"
-   - "${PWD}/mysql/5.6/conf.d:/etc/mysql/conf.d"
+   - "${PWD}/mysql/5.7/data:/var/lib/mysql"
+   - "${PWD}/mysql/5.7/conf.d:/etc/mysql/conf.d"
   environment:
    MYSQL_ROOT_PASSWORD: "root"
   container_name: "mysql"

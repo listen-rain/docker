@@ -14,17 +14,17 @@ services:
    - "${PWD}/nginx/conf.d:/etc/nginx/conf.d"
   container_name: "nginx"
   depends_on:
-    - "php"
-    - "mysql"
+   - "php"
+   - "mysql"
   image: "nginx"
   restart: "always"
   extra_hosts: 
-    - "suzhu:172.20.0.1"
+   - "suzhu:172.20.0.1"
   networks: 
-    appnet:
-      ipv4_address: "172.20.0.5"
-
- php:
+   appnet:
+    ipv4_address: "172.20.0.2"
+ 
+ php72:
   ports:
    - "9000:9000"
   external_links:
@@ -32,13 +32,47 @@ services:
    - "redis"
   volumes:
    - "/www:/www"
-   - "${PWD}/php-fpm/logs:/logs"
+   - "${PWD}/php-fpm/7.2.8/logs:/logs"
   container_name: "php"
   image: "php:7.2.8-fpm"
   restart: "always"
   networks: 
+   appnet:
+    ipv4_address: "172.20.0.3"
+
+ php71:
+  ports:
+   - "9000:9000"
+  external_links:
+   - "mysql"
+   - "redis"
+  volumes:
+   - "/www:/www"
+   - "${PWD}/php-fpm/7.1.15/logs:/logs"
+  container_name: "php"
+  image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-7.1.15"
+  restart: "always"
+  networks: 
+   appnet:
+    ipv4_address: "172.20.0.4"
+
+ php70:
+   ports:
+    - "9000:9000"
+   external_links:
+    - "mysql"
+    - "redis"
+   volumes:
+    - "/www:/www"
+    - "${PWD}/php-fpm/7.0.27/conf.d:/usr/local/etc/php/conf.d"
+    - "${PWD}/php-fpm/7.0.27/logs:/logs"
+   container_name: "php"
+   image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-7.0.27"
+   restart: "always"
+   networks: 
     appnet:
-      ipv4_address: "172.20.0.4"
+     ipv4_address: "172.19.0.5"
+
 
  redis:
   ports:
@@ -51,8 +85,25 @@ services:
   restart: "always"
   command: redis-server /usr/local/etc/redis/redis.conf 
   networks:
-    appnet: 
-     ipv4_address: "172.20.0.3"
+   appnet: 
+    ipv4_address: "172.20.0.6"
+
+# mysql:
+#  ports:
+#   - "3306:3306"
+#  volumes:
+#   - "/www:/www"
+#   - "${PWD}/mysql/5.5.58/data:/var/lib/mysql"
+#   - "${PWD}/mysql/5.5.58/conf.d:/etc/mysql/conf.d"
+#  environment:
+#   MYSQL_ROOT_PASSWORD: "root"
+#  container_name: "mysql"
+#  image: "mysql:5.5.58"
+#  restart: "always"
+#  networks: 
+#   appnet:
+#   ipv4_address: "172.19.0.2"
+
 
  mysql:
   ports:
@@ -67,8 +118,8 @@ services:
   image: "mysql:5.7.20"
   restart: "always"
   networks: 
-    appnet:
-      ipv4_address: "172.20.0.2"
+   appnet:
+    ipv4_address: "172.20.0.7"
 
 networks:
   appnet:

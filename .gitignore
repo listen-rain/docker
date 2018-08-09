@@ -1,12 +1,12 @@
 
-compose/web/nginx/logs
-compose/web/nginx/conf.d
+compose/web/nginx/logs/*
+compose/web/nginx/conf.d/*
 
-compose/search/esdata
-search/es/5.6.3/esdata
+compose/search/esdata/*
+search/es/5.6.3/esdata/*
 
-compose/web/mysql/5.5.58/data
-compose/web/mysql/5.6/data/
-compose/web/mysql/5.7/data/
-compose/web/redis/data/
+compose/web/mysql/5.5.58/data/*
+compose/web/mysql/5.6/data/*
+compose/web/mysql/5.7/data/*
+compose/web/redis/data/*
 

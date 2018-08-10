@@ -34,13 +34,14 @@ services:
   ports:
    - "9002:9000"
   external_links:
-   - "mysql"
+   - "mysql57"
+   - "mysql55"
    - "redis"
   volumes:
    - "/www:/www"
    - "${PWD}/php-fpm/7.2.8/logs:/logs"
   container_name: "php72"
-  image: "php:7.2.8-fpm"
+  image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-7.2.8"
   restart: "always"
   networks: 
    appnet:
@@ -50,7 +51,8 @@ services:
   ports:
    - "9001:9000"
   external_links:
-   - "mysql"
+   - "mysql57"
+   - "mysql55"
    - "redis"
   volumes:
    - "/www:/www"
@@ -66,7 +68,8 @@ services:
    ports:
     - "9000:9000"
    external_links:
-    - "mysql"
+    - "mysql57"
+    - "mysql55"
     - "redis"
    volumes:
     - "/www:/www"
@@ -78,7 +81,6 @@ services:
    networks: 
     appnet:
      ipv4_address: "172.20.0.5"
-
 
  redis:
   ports:
@@ -125,8 +127,6 @@ services:
   networks: 
    appnet:
     ipv4_address: "172.20.0.2"
-
-
 
 networks:
  appnet:

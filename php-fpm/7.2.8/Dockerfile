@@ -8,5 +8,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 
 RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
-RUN apy-get install git
+RUN apt-get update \
+	&& apt-get -y install git --no-install-recommends \
+	&& rm -r /var/lib/apt/lists/* 
 

@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # pear config-set http_proxy ''
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-	libzip-dev libzip2 \
+	libzip-dev libzip2 git \
     && pecl install redis \
     && pecl install zip \
     && pecl install apcu \

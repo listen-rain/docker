@@ -26,6 +26,9 @@ services:
   restart: "always"
   extra_hosts: 
    - "suzhu:172.20.0.1"
+  networks: 
+   appnet:
+    ipv4_address: "172.20.0.8"
  
  php72:
   ports:
@@ -39,6 +42,9 @@ services:
   container_name: "php72"
   image: "php:7.2.8-fpm"
   restart: "always"
+  networks: 
+   appnet:
+    ipv4_address: "172.20.0.7"
 
  php71:
   ports:
@@ -52,6 +58,9 @@ services:
   container_name: "php71"
   image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-7.1.15"
   restart: "always"
+  networks: 
+   appnet:
+    ipv4_address: "172.20.0.6"
 
  php70:
    ports:
@@ -66,6 +75,10 @@ services:
    container_name: "php70"
    image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-7.0.27"
    restart: "always"
+   networks: 
+    appnet:
+     ipv4_address: "172.20.0.5"
+
 
  redis:
   ports:
@@ -77,6 +90,9 @@ services:
   image: "redis:4.0"
   restart: "always"
   command: redis-server /usr/local/etc/redis/redis.conf 
+  networks:
+   appnet: 
+    ipv4_address: "172.20.0.4"
 
  mysql57:
   ports:
@@ -90,6 +106,9 @@ services:
   container_name: "mysql57"
   image: "mysql:5.7.20"
   restart: "always"
+  networks: 
+   appnet:
+    ipv4_address: "172.20.0.3"
  
  mysql55:
   ports:
@@ -103,3 +122,17 @@ services:
   container_name: "mysql55"
   image: "mysql:5.5.58"
   restart: "always"
+  networks: 
+   appnet:
+    ipv4_address: "172.20.0.2"
+
+
+
+networks:
+ appnet:
+  ipam: 
+   driver: "default"
+   config:
+    - subnet: 172.20.0.0/24
+      gateway: 172.20.0.1                   
+ 

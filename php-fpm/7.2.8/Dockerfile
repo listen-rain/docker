@@ -7,3 +7,6 @@ RUN curl -sS https://getcomposer.org/installer | php \
 	&& mv composer.phar /usr/local/bin/composer
 
 RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+RUN apy-get install git
+

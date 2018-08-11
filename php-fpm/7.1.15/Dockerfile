@@ -1,8 +1,9 @@
 FROM php:7.1.15-fpm
 
-RUN echo "alias ls='ls --color=auto'" \
+RUN echo "alias ls='ls --color=auto'" >> ~/.bashrc \
 	&& echo "alias l='ls -lah'" >> ~/.bashrc \
-	&& echo "alias ll='ls -lah'" >> ~/.bashrc 
+	&& echo "alias ll='ls -lah'" >> ~/.bashrc \
+	&& . ~/.bashrc
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	libfreetype6-dev \

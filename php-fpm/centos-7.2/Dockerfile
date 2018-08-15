@@ -16,5 +16,7 @@ RUN yum install epel-release -y \
 		php72w-pdo \
 		php72w-xml
 
+CMD ["/usr/sbin/php-fpm", "-F"]
+
 WORKDIR /www
 

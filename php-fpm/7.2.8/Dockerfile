@@ -8,10 +8,6 @@ RUN curl -sS https://getcomposer.org/installer | php \
 
 RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
-RUN apt-get update \
-	&& apt-get -y install git --no-install-recommends \
-	&& rm -r /var/lib/apt/lists/* 
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -38,3 +34,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /www
+

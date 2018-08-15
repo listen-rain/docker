@@ -16,6 +16,32 @@ RUN yum install epel-release -y \
 		php72w-pdo \
 		php72w-xml
 
+RUN set -ex \
+	&& cd /etc \
+	&& if [ -d php-fpm.d ]; then \
+	{ \
+		echo '[global]'; \
+		echo 'error_log = /proc/self/fd/2'; \
+		echo; \
+		echo '[www]'; \
+		echo '; if we send this to /proc/self/fd/1, it never appears'; \
+		echo 'access.log = /proc/self/fd/2'; \
+		echo; \
+		echo 'clear_env = no'; \
+		echo; \
+		echo '; Ensure worker stdout and stderr are sent to the main error log.'; \
+		echo 'catch_workers_output = yes'; \
+	} | tee php-fpm.d/docker.conf \
+	&& { \
+		echo '[global]'; \
+		echo 'daemonize = no'; \
+		echo; \
+		echo '[www]'; \
+		echo 'listen = 9000'; \
+	} | tee php-fpm.d/zz-docker.conf
+
+EXPOSE 9000
+
 CMD ["/usr/sbin/php-fpm", "-F"]
 
 WORKDIR /www

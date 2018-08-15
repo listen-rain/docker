@@ -35,9 +35,9 @@ services:
    - "redis"
   volumes:
    - "/www:/www"
-   - "${PWD}/php-fpm/7.2.8/logs:/logs"
+   - "${PWD}/php-fpm/cphp72/logs:/logs"
   container_name: "php72"
-  image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-7.2.8"
+  image: "${BASE}:php-fpm-7.2.8"
   restart: "always"
 
  php71:
@@ -51,7 +51,7 @@ services:
    - "/www:/www"
    - "${PWD}/php-fpm/7.1.15/logs:/logs"
   container_name: "php71"
-  image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-7.1.15"
+  image: "${BASE}:php-fpm-7.1.15"
   restart: "always"
 
  php70:
@@ -66,7 +66,7 @@ services:
     - "${PWD}/php-fpm/7.0.27/conf.d:/usr/local/etc/php/conf.d"
     - "${PWD}/php-fpm/7.0.27/logs:/logs"
    container_name: "php70"
-   image: "registry.cn-hangzhou.aliyuncs.com/listen/php-fpm-7.0.27"
+   image: "${BASE}:php-fpm-7.0.27"
    restart: "always"
 
  redis:

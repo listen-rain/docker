@@ -11,7 +11,7 @@ fi
 
 if [ "$1" == "" ];then
 	docker ps
-	exit
+	exit 1
 fi
 
 if [ "$2" != "" ];then

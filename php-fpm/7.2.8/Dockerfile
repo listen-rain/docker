@@ -20,17 +20,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # pear config-set http_proxy 'VPN'
 # pear config-set http_proxy ''
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-	libzip-dev libzip2 git \
-    && pecl install redis \
-    && pecl install zip \
-    && pecl install apcu \
-    && pecl install xdebug \
-    && pecl install mongodb \
-    && pear install PHP_CodeSniffer \
-    && phpcs --config-set encoding 'utf-8' \
-    && docker-php-ext-enable redis apcu xdebug mongodb zip \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#	libzip-dev libzip2 git \
+#    && pecl install redis \
+#    && pecl install zip \
+#    && pecl install apcu \
+#    && pecl install xdebug \
+#    && pecl install mongodb \
+#    && pear install PHP_CodeSniffer \
+#    && phpcs --config-set encoding 'utf-8' \
+#    && docker-php-ext-enable redis apcu xdebug mongodb zip \
+#    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /www
 

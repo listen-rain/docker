@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/listen/centos:latest
+FROM centos:7.5.1804
 
 RUN yum -y update \
 	&& yum -y install nodejs \

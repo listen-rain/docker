@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/listen/cnpm:latest
+FROM zhufengwei/docker:cnpm
 
 RUN cd / && mkdir hexo
  

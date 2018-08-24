@@ -23,7 +23,7 @@ services:
    - "php70"
    - "mysql57"
    - "mysql55"
-  image: "nginx"
+  image: "zhufengwei/docker:nginx"
   restart: "always"
  
  php72:

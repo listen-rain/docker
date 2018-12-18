@@ -1,19 +1,15 @@
 #!/bin/bash
 
-if [ ! -d /hexo ];then
-    mkdir /hexo
-fi
+HEXO_WORKDIR='/www/hexo'
 
-cd /hexo
-
-cnpm install hexo-cli -g 
+if [ ! -d "$HEXO_WORKDIR" ];then
+    mkdir $HEXO_WORKDIR \
+	&& cd $HEXO_WORKDIR \
+	&& cnpm install hexo-cli -g 
         
-if [ ! -d "/hexo/blog" ];then
-    hexo init blog 
-    sleep 20s
-fi 
-
-cd blog \
-    && cnpm install \
-    && hexo server 
+if [ ! -d "$HEXO_WORKDIR/blog" ];then
+    hexo init blog \
+	&& cd blog \
+	&& cnpm install
+fi
 

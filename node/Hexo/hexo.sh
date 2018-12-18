@@ -4,5 +4,5 @@ docker run -it \
 	--name myhexo \
 	-p 4000:4000 \
 	-v /www:/www \
-	-d zhufengwei/docker:hexo bash
+	-d hexo bash
 

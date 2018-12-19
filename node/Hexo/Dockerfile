@@ -1,6 +1,6 @@
 FROM zhufengwei/docker:cnpm
 
-COPY start.sh /usr/local/bin/
+COPY $PWD/start.sh /usr/local/bin/
 
 RUN chmod a+x /usr/local/bin/start.sh && ln -s /usr/local/bin/start.sh /start.sh
 

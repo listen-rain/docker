@@ -13,3 +13,6 @@ if [ ! -d "$HEXO_WORKDIR/blog" ];then
 	&& cnpm install
 fi
 
+# hexo server
+bash
+

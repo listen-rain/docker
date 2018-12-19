@@ -1,0 +1,19 @@
+zend_extension="xdebug.so"
+xdebug.remote_enable = On
+
+;启用性能检测分析
+;xdebug.profiler_enable = On
+;启用代码自动跟踪
+;xdebug.auto_trace=On
+
+;xdebug.profiler_enable_trigger = On
+;xdebug.profiler_output_name = cachegrind.out.%t.%p
+
+;指定性能分析文件的存放目录
+;xdebug.profiler_output_dir ="/logs"
+;xdebug.show_local_vars=0
+
+;配置端口和监听的域名
+;xdebug.remote_port=9000
+;xdebug.remote_host="centos.test.local"
+

@@ -11,5 +11,3 @@ RUN yum -y update && yum -y install wget \
 	&& rm -rf ~/.bash_history \
 	&& rm -rf /tmp/* /var/log/* /var/cache/* 
 
-CMD ['/bin/bash']
-

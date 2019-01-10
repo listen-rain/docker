@@ -1,13 +1,17 @@
 #!/bin/bash
 
 if [[ -f get-docker.sh ]];then
-	
+    echo "正在安装...\n" \
+	    && sh get-docker.sh --mirror Aliyun \
+	    && systemctl enable docker \
+	    && docker info
 fi
-sh get-docker.sh --mirror Aliyun \
- && mkdir -p /etc/docker \
- && touch /etc/docker/daemon.json \
- && echo "{ \"registry-mirrors\": [ \"https://$1.mirror.aliyuncs.com\" ] }" > /etc/docker/daemon.json \
- && systemctl enable docker \
- && systemctl start docker \
- && docker info
 
+if [[ -n $1 ]];then
+    echo "正在更换为国内镜像...\n" \
+        && mkdir -p /etc/docker \
+        && touch /etc/docker/daemon.json \
+        && echo "{ \"registry-mirrors\": [ \"https://$1.mirror.aliyuncs.com\" ] }" > /etc/docker/daemon.json \
+        && systemctl start docker \
+        && docker info
+fi

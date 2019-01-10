@@ -3,8 +3,8 @@ version: '2'
 services:
  nginx:
   ports:
-   - "8080:80"
-   - "4433:443"
+   - "80:80"
+   - "433:443"
   external_links:
    - "php70"
    - "php71"
@@ -12,7 +12,7 @@ services:
    - "mysql55"
    - "mysql57"
   volumes:
-   - "/www:/www" 
+   - "/www:/www"
    - "${PWD}/nginx/nginx.conf:/etc/nginx/nginx.conf"
    - "${PWD}/nginx/logs:/etc/nginx/logs"
    - "${PWD}/nginx/conf.d:/etc/nginx/conf.d"
@@ -25,10 +25,10 @@ services:
    - "mysql55"
   image: "zhufengwei/docker:nginx"
   restart: "always"
-  networks: 
+  networks:
    default:
-    ipv4_address: "172.19.0.2"      
- 
+    ipv4_address: "172.19.0.2"
+
  php72:
   ports:
    - "9002:9000"
@@ -42,7 +42,7 @@ services:
   container_name: "php72"
   image: "${BASE}:php-fpm-7.2.8"
   restart: "always"
-  networks: 
+  networks:
    default:
     ipv4_address: "172.19.0.3"
 
@@ -59,7 +59,7 @@ services:
   container_name: "php71"
   image: "${BASE}:php-fpm-7.1.15"
   restart: "always"
-  networks: 
+  networks:
    default:
     ipv4_address: "172.19.0.4"
 
@@ -77,7 +77,7 @@ services:
    container_name: "php70"
    image: "${BASE}:php-fpm-7.0.27"
    restart: "always"
-   networks: 
+   networks:
     default:
      ipv4_address: "172.19.0.5"
 
@@ -90,8 +90,8 @@ services:
   container_name: "redis"
   image: "redis:4.0"
   restart: "always"
-  command: redis-server /usr/local/etc/redis/redis.conf 
-  networks: 
+  command: redis-server /usr/local/etc/redis/redis.conf
+  networks:
    default:
     ipv4_address: "172.19.0.6"
 
@@ -107,10 +107,10 @@ services:
   container_name: "mysql57"
   image: "mysql:5.7.20"
   restart: "always"
-  networks: 
+  networks:
    default:
     ipv4_address: "172.19.0.7"
- 
+
  mysql55:
   ports:
    - "3307:3306"
@@ -123,15 +123,15 @@ services:
   container_name: "mysql55"
   image: "mysql:5.5.58"
   restart: "always"
-  networks: 
+  networks:
    default:
     ipv4_address: "172.19.0.8"
- 
+
 networks:
  default:
-  ipam: 
+  ipam:
    driver: "default"
    config:
     - subnet: 172.19.0.0/24
-      gateway: 172.19.0.1 
+      gateway: 172.19.0.1
 

@@ -6,9 +6,15 @@ ENV yum_repo=http://mirrors.aliyun.com/repo/Centos-altarch-7.repo \
 RUN mv $base_repo $base_repo.back \
 	&& curl -o $base_repo $yum_repo
 
+# RUN yum clean all \
+#	&& yum makecache \
+#	&& yum -y update \
+#	&& yum -y install net-tools vim \
+#	&& yum -y install gdb less libunwind gperftools graphviz ghostscript
+
 WORKDIR /app
 
-ADD Dockerfile .
+ADD Dockerfile /app
 
 CMD ["/bin/bash"]
 

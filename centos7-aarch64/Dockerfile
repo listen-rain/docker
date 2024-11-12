@@ -1,5 +1,7 @@
 FROM centos:centos7
 
+RUN echo -e "alias l='ls -lah --color=auto'\n alias ll='l'" >> ~/.bashrc
+
 ENV yum_repo=http://mirrors.aliyun.com/repo/Centos-altarch-7.repo \
     base_repo=/etc/yum.repos.d/CentOS-Base.repo
 
